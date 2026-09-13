@@ -1,0 +1,3159 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/27/2026 7:13:49 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="YUSUFKAMAL"
+  DTS:CreatorName="YUSUFKAMAL\yusuf"
+  DTS:DTSID="{B34328B6-F61C-4593-B753-62ACD1DBCE4B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Load_Api"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{2036DA0F-9217-4A44-803D-1380149B22E8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost\YUSUF_KAMAL.SalesDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{791A5C6C-3A6A-4D19-9AA3-9278FFCB8BA1}"
+      DTS:ObjectName="localhost\YUSUF_KAMAL.SalesDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost\YUSUF_KAMAL;Initial Catalog=SalesDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{791A5C6C-3A6A-4D19-9AA3-9278FFCB8BA1}localhost\YUSUF_KAMAL.SalesDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Full_Load_Api_Products&amp;Product_Reviews"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{2b4a961e-d7ef-4a7d-b3a0-8f7c99ef3d5a}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Full_Load_Api_Products&amp;Product_Reviews">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{8428ed68-a765-4efd-9838-5c8cb0642b55}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT_API_Products"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[API_Products]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[localhost\YUSUF_KAMAL.SalesDW]"
+                      connectionManagerRefId="Package.ConnectionManagers[localhost\YUSUF_KAMAL.SalesDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Brand]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Brand"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Brand]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Brand]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Stock]"
+                          cachedDataType="i4"
+                          cachedName="Stock"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Stock]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Stock]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Price]"
+                          cachedDataType="decimal"
+                          cachedName="Price"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Price]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Category]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Category"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Category]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rating]"
+                          cachedDataType="decimal"
+                          cachedName="Rating"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Rating]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Title]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="Title"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Title]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MinimumOrderQuantity]"
+                          cachedDataType="i4"
+                          cachedName="MinimumOrderQuantity"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MinimumOrderQuantity]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[MinimumOrderQuantity]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ReturnPolicy]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="ReturnPolicy"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReturnPolicy]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[ReturnPolicy]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AvailabilityStatus]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="AvailabilityStatus"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AvailabilityStatus]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[AvailabilityStatus]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShippingInformation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="ShippingInformation"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShippingInformation]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[ShippingInformation]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[WarrantyInformation]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="WarrantyInformation"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WarrantyInformation]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[WarrantyInformation]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Weight]"
+                          cachedDataType="i4"
+                          cachedName="Weight"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Weight]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Weight]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SKU]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="SKU"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SKU]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[SKU]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DiscountPercentage]"
+                          cachedDataType="decimal"
+                          cachedName="DiscountPercentage"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiscountPercentage]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[DiscountPercentage]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Description]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1000"
+                          cachedName="Description"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Description]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedDataType="i4"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[ProductID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="Title" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          codePage="1252"
+                          dataType="text"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Category]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Category" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                          dataType="numeric"
+                          name="Price"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiscountPercentage]"
+                          dataType="numeric"
+                          name="DiscountPercentage"
+                          precision="5"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
+                          dataType="numeric"
+                          name="Rating"
+                          precision="3"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Stock]"
+                          dataType="i4"
+                          name="Stock" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Brand]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Brand" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SKU]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="SKU" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Weight]"
+                          dataType="i4"
+                          name="Weight" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[WarrantyInformation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="WarrantyInformation" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShippingInformation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="ShippingInformation" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AvailabilityStatus]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="AvailabilityStatus" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReturnPolicy]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="ReturnPolicy" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MinimumOrderQuantity]"
+                          dataType="i4"
+                          name="MinimumOrderQuantity" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;14"
+                  description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+                  name="Script Component 1"
+                  version="14">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Stores the source code of the component"
+                      isArray="true"
+                      name="SourceCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="36">
+                        <arrayElement
+                          dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public Output0Buffer Output0Buffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != Output0Buffer)
+        {
+            Output0Buffer.SetEndOfRowset();
+            Output0Buffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Output 0"))
+            {
+                Output0Buffer = new Output0Buffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Net;
+using System.Web.Script.Serialization;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    public override void CreateNewOutputRows()
+    {
+        using (WebClient client = new WebClient())
+        {
+            string json = client.DownloadString("https://dummyjson.com/products?limit=0");
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = Int32.MaxValue;
+            var result = serializer.Deserialize<Dictionary<string, object>>(json);
+            var products = (System.Collections.ArrayList)result["products"];
+
+            foreach (Dictionary<string, object> product in products)
+            {
+                Output0Buffer.AddRow();
+
+                Output0Buffer.ProductID = product.ContainsKey("id") ? Convert.ToInt32(product["id"]) : 0;
+                Output0Buffer.Title = product.ContainsKey("title") ? product["title"].ToString() : "";
+                Output0Buffer.Description = product.ContainsKey("description") ? product["description"].ToString() : "";
+                Output0Buffer.Category = product.ContainsKey("category") ? product["category"].ToString() : "";
+                Output0Buffer.Price = product.ContainsKey("price") ? Convert.ToDecimal(product["price"]) : 0;
+                Output0Buffer.DiscountPercentage = product.ContainsKey("discountPercentage") ? Convert.ToDecimal(product["discountPercentage"]) : 0;
+                Output0Buffer.Rating = product.ContainsKey("rating") ? Convert.ToDecimal(product["rating"]) : 0;
+                Output0Buffer.Stock = product.ContainsKey("stock") ? Convert.ToInt32(product["stock"]) : 0;
+                Output0Buffer.Brand = product.ContainsKey("brand") ? product["brand"].ToString() : "N/A";
+                Output0Buffer.SKU = product.ContainsKey("sku") ? product["sku"].ToString() : "";
+                Output0Buffer.Weight = product.ContainsKey("weight") ? Convert.ToInt32(product["weight"]) : 0;
+                Output0Buffer.WarrantyInformation = product.ContainsKey("warrantyInformation") ? product["warrantyInformation"].ToString() : "";
+                Output0Buffer.ShippingInformation = product.ContainsKey("shippingInformation") ? product["shippingInformation"].ToString() : "";
+                Output0Buffer.AvailabilityStatus = product.ContainsKey("availabilityStatus") ? product["availabilityStatus"].ToString() : "";
+                Output0Buffer.ReturnPolicy = product.ContainsKey("returnPolicy") ? product["returnPolicy"].ToString() : "";
+                Output0Buffer.MinimumOrderQuantity = product.ContainsKey("minimumOrderQuantity") ? Convert.ToInt32(product["minimumOrderQuantity"]) : 0;
+            }
+        }
+    }
+}]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Output0Buffer: ScriptBuffer
+
+{
+    public Output0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String Brand
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool Brand_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 Stock
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool Stock_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal Price
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool Price_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String Category
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool Category_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal Rating
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool Rating_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String Title
+    {
+        set
+        {
+            this[5] = value;
+        }
+    }
+    public bool Title_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(5);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 MinimumOrderQuantity
+    {
+        set
+        {
+            this[6] = value;
+        }
+    }
+    public bool MinimumOrderQuantity_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(6);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String ReturnPolicy
+    {
+        set
+        {
+            this[7] = value;
+        }
+    }
+    public bool ReturnPolicy_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(7);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String AvailabilityStatus
+    {
+        set
+        {
+            this[8] = value;
+        }
+    }
+    public bool AvailabilityStatus_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(8);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String ShippingInformation
+    {
+        set
+        {
+            this[9] = value;
+        }
+    }
+    public bool ShippingInformation_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(9);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String WarrantyInformation
+    {
+        set
+        {
+            this[10] = value;
+        }
+    }
+    public bool WarrantyInformation_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(10);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 Weight
+    {
+        set
+        {
+            this[11] = value;
+        }
+    }
+    public bool Weight_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(11);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String SKU
+    {
+        set
+        {
+            this[12] = value;
+        }
+    }
+    public bool SKU_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(12);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal DiscountPercentage
+    {
+        set
+        {
+            this[13] = value;
+        }
+    }
+    public bool DiscountPercentage_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(13);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String Description
+    {
+        set
+        {
+            this[14] = value;
+        }
+    }
+    public bool Description_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(14);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 ProductID
+    {
+        set
+        {
+            this[15] = value;
+        }
+    }
+    public bool ProductID_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(15);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[SC_dfd35beb725341c2a6640d0fcfa728b0.csproj]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{807BAE93-72BE-40D2-BED1-D40B763353EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_dfd35beb725341c2a6640d0fcfa728b0</RootNamespace>
+    <AssemblyName>SC_dfd35beb725341c2a6640d0fcfa728b0</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>C:\Users\yusuf\AppData\Local\Temp\Vsta\SSIS_SC170\VstawQcSjRvopEuNefdIysS0zw\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>C:\Users\yusuf\AppData\Local\Temp\Vsta\SSIS_SC170\VstawQcSjRvopEuNefdIysS0zw\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>C:\Users\yusuf\AppData\Local\Temp\Vsta\SSIS_SC170\VstawQcSjRvopEuNefdIysS0zw\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\yusuf\AppData\Local\Temp\Vsta\SSIS_SC170\VstawQcSjRvopEuNefdIysS0zw\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\yusuf\AppData\Local\Temp\Vsta\SSIS_SC170\VstawQcSjRvopEuNefdIysS0zw\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>C:\Users\yusuf\AppData\Local\Temp\Vsta\SSIS_SC170\VstawQcSjRvopEuNefdIysS0zw\packages\System.Text.Encodings.Web.4.7.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>C:\Users\yusuf\AppData\Local\Temp\Vsta\SSIS_SC170\VstawQcSjRvopEuNefdIysS0zw\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>C:\Users\yusuf\AppData\Local\Temp\Vsta\SSIS_SC170\VstawQcSjRvopEuNefdIysS0zw\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>C:\Users\yusuf\AppData\Local\Temp\Vsta\SSIS_SC170\VstawQcSjRvopEuNefdIysS0zw\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC170</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[app.config]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Runtime.CompilerServices.Unsafe" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.6.0" newVersion="4.0.6.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Threading.Tasks.Extensions" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.2.0.1" newVersion="4.2.0.1" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.ValueTuple" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.3.0" newVersion="4.0.3.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Buffers" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.3.0" newVersion="4.0.3.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+</configuration>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[packages.config]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="System.Buffers" version="4.5.1" targetFramework="net472" />
+</packages>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_dfd35beb725341c2a6640d0fcfa728b0.Properties.Settings.get_Default():SC_dfd35beb725341c2a6640d0fcfa728b0.Properties.Sett" +
+    "ings")]
+
+namespace SC_dfd35beb725341c2a6640d0fcfa728b0.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Project]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_dfd35beb725341c2a6640d0fcfa728b0</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_dfd35beb725341c2a6640d0fcfa728b0</msb:DisplayName>
+    <msb:ProjectId>{AAA5A6CB-81BC-4648-AF8F-6BC497D47974}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_dfd35beb725341c2a6640d0fcfa728b0.csproj" />
+    <msb:File Include="app.config" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="packages.config" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_dfd35beb725341c2a6640d0fcfa728b0")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_dfd35beb725341c2a6640d0fcfa728b0")]
+[assembly: AssemblyCopyright("Copyright @  2026")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_dfd35beb725341c2a6640d0fcfa728b0.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_dfd35beb725341c2a6640d0fcfa728b0.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_dfd35beb725341c2a6640d0fcfa728b0.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_dfd35beb725341c2a6640d0fcfa728b0.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_dfd35beb725341c2a6640d0fcfa728b0.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                      </arrayElements>
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Stores the binary representation of the component"
+                      isArray="true"
+                      name="BinaryCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="2">
+                        <arrayElement
+                          dataType="System.String"><![CDATA[SC_dfd35beb725341c2a6640d0fcfa728b0.dll]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[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
++gApABcnAAAAAIMY0wYGACoAHycAAAAAkwiQBgABKgBLJwAAAACTCDgBBQEqAFInAAAAAJMIRAEK
+ASoAWicAAAAAlgiJCBABKwBhJwAAAACGGNMGBgArAGknAAAAAJEY2QYVASsAAAABAIkGAAACALkH
+AAADAFwGAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAAB
+ADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMD
+AAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABADMDAAAB
+ADMDAAABADMDAAABADMDAAABADMDAAABADMDAAABACoIAAACAOAGAAADABwIAAAEAFwGAAABAMMI
+AAABAMMIAAABADMDCQDTBgEAEQDTBgYAGQDTBgoAKQDTBhAAMQDTBhAAOQDTBhAAQQDTBhAASQDT
+BhAAUQDTBhAAWQDTBhAAYQDTBhAAaQDTBgYAwQDTBgYA4QDTBhUA8QDTBgYAcQDTBgYAcQBfAysA
++QDTBgYA+QCCAwEA+QA5AzAADABXBUcAAQHFBk4AeQDNCFMADABWCVcACQElAF0AiQBuA2IAsQBJ
+BmYACQGeA2oAeQA1CXAAkQB4AQYAmQDTBnQAmQBgBX4AmQBPBQEAEQHTBhAAmQA+CQYAmQBvCAYA
+mQByCHAAuQDTBgYAuQBRAIgAuQDNB48AiQDTBgYAIQH2AJUAIQFiCZ4AyQDTBqQA6QDTBgYALgAL
+ADkBLgATAEIBLgAbAGEBLgAjAGoBLgArAJMBLgAzAJMBLgA7AJMBLgBDAGoBLgBLAJkBLgBTAJMB
+LgBbALABQwBjAPoB4wBrAPoBAQF7APoBKQRzAGEBSQRzAGEBGwCEAAMAAQAHACEACAAjAAAAoQAZ
+AQAADgQdAQAAmAMhAQAAcQQdAQAAqwAlAQAAHwQdAQAAcwkZAQAAHwUdAQAAewMlAQAAXwQdAQAA
+DAEZAQAATgQdAQAAgAkhAQAAMwUdAQAASQkZAQAABwUdAQAANggZAQAA1wQdAQAAiwUZAQAAggQd
+AQAAowUZAQAAoQQdAQAAggghAQAA9QQdAQAAYQAZAQAA/wMdAQAAxQAlAQAAMAQdAQAAMQYZAQAA
+wAQdAQAARwAhAQAA6gMdAQAAlAYqAQAAWAEvAQAAjQg0AQEABAADAAEABQAFAAEABgAHAAEABwAJ
+AAEACAALAAEACQANAAEACgAPAAEACwARAAEADAATAAEADQAVAAEADgAXAAEADwAZAAEAEAAbAAEA
+EQAdAAEAEgAfAAEAEwAhAAEAFAAjAAEAFQAlAAEAFgAnAAEAFwApAAEAGAArAAEAGQAtAAEAGgAv
+AAEAGwAxAAEAHAAzAAEAHQA1AAEAHgA3AAEAHwA5AAEAIAA7AAEAIQA9AAEAIgA/AAEAIwBBAAIA
+LwBDAAIAMABFAAEAMQBFAAIAMgBHAEAABIAAAAEAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAAA
+AKwAZQAAAAAAEQAAAAAAAAAAAAAAtQDZCAAAAAAEAAAAAAAAAAAAAACsAGkFAAAAABEAAAAAAAAA
+AAAAALUACAkAAAAABAAAAAAAAAAAAAAAvgDnBwAAAAAAAAAAAQAAAC4HAAApADcAAAAAU0NfZGZk
+MzViZWI3MjUzNDFjMmE2NjQwZDBmY2ZhNzI4YjAAVG9JbnQzMgBEaWN0aW9uYXJ5YDIAPE1vZHVs
+ZT4Ac2V0X1Byb2R1Y3RJRABHZXRPdXRwdXRJRABzZXRfU0tVAG1zY29ybGliAFN5c3RlbS5Db2xs
+ZWN0aW9ucy5HZW5lcmljAE1hcmtPdXRwdXRzRmluaXNoZWQAc2V0X0JyYW5kAHNldF9QcmljZQBk
+ZWZhdWx0SW5zdGFuY2UAc2V0X0Rpc2NvdW50UGVyY2VudGFnZQBJRGlzcG9zYWJsZQBSdW50aW1l
+VHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBzZXRfVGl0bGUATWljcm9zb2Z0LlNxbFNlcnZl
+ci5EdHMuUGlwZWxpbmUAVHlwZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1
+cmUAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UARGlzcG9zZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBD
+b21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERl
+YnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVB
+dHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmli
+dXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0
+cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0
+cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRy
+eVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJp
+bGl0eUF0dHJpYnV0ZQB2YWx1ZQBEZXNlcmlhbGl6ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5n
+AERvd25sb2FkU3RyaW5nAFRvU3RyaW5nAHNldF9SYXRpbmcAc2V0X01heEpzb25MZW5ndGgAc2V0
+X1N0b2NrAFRvRGVjaW1hbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU0NfZGZkMzViZWI3MjUzNDFj
+MmE2NjQwZDBmY2ZhNzI4YjAuZGxsAHNldF9Qcm9kdWN0SURfSXNOdWxsAHNldF9TS1VfSXNOdWxs
+AHNldF9CcmFuZF9Jc051bGwAc2V0X1ByaWNlX0lzTnVsbABzZXRfRGlzY291bnRQZXJjZW50YWdl
+X0lzTnVsbABzZXRfVGl0bGVfSXNOdWxsAHNldF9SYXRpbmdfSXNOdWxsAHNldF9TdG9ja19Jc051
+bGwAc2V0X1NoaXBwaW5nSW5mb3JtYXRpb25fSXNOdWxsAHNldF9XYXJyYW50eUluZm9ybWF0aW9u
+X0lzTnVsbABzZXRfRGVzY3JpcHRpb25fSXNOdWxsAHNldF9BdmFpbGFiaWxpdHlTdGF0dXNfSXNO
+dWxsAHNldF9XZWlnaHRfSXNOdWxsAHNldF9SZXR1cm5Qb2xpY3lfSXNOdWxsAHNldF9DYXRlZ29y
+eV9Jc051bGwAc2V0X01pbmltdW1PcmRlclF1YW50aXR5X0lzTnVsbABTZXROdWxsAGdldF9JdGVt
+AHNldF9JdGVtAFN5c3RlbQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAHNldF9TaGlwcGluZ0luZm9y
+bWF0aW9uAHNldF9XYXJyYW50eUluZm9ybWF0aW9uAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3Rl
+bS5HbG9iYWxpemF0aW9uAFN5c3RlbS5XZWIuU2NyaXB0LlNlcmlhbGl6YXRpb24AU3lzdGVtLlJl
+ZmxlY3Rpb24ASW52YWxpZE9wZXJhdGlvbkV4Y2VwdGlvbgBzZXRfRGVzY3JpcHRpb24AQ3VsdHVy
+ZUluZm8AWmVybwBPdXRwdXROYW1lTWFwAE91dHB1dE1hcABPdXRwdXQwQnVmZmVyAFBpcGVsaW5l
+QnVmZmVyAFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAEphdmFTY3JpcHRTZXJpYWxp
+emVyAElFbnVtZXJhdG9yAEdldEVudW1lcmF0b3IALmN0b3IALmNjdG9yAE91dHB1dElEcwBTeXN0
+ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVz
+b3VyY2VzAFNDX2RmZDM1YmViNzI1MzQxYzJhNjY0MGQwZmNmYTcyOGIwLlByb3BlcnRpZXMuUmVz
+b3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTQ19kZmQzNWJlYjcyNTM0MWMyYTY2NDBk
+MGZjZmE3MjhiMC5Qcm9wZXJ0aWVzAFZhcmlhYmxlcwBCdWZmZXJDb2x1bW5JbmRleGVzAEdldENv
+bHVtbkluZGV4ZXMAU2V0dGluZ3MAU3lzdGVtLldlYi5FeHRlbnNpb25zAFN5c3RlbS5Db2xsZWN0
+aW9ucwBDb25uZWN0aW9ucwBCdWZmZXJzAEZpbmlzaE91dHB1dHMAc2V0X0F2YWlsYWJpbGl0eVN0
+YXR1cwBDcmVhdGVOZXdPdXRwdXRSb3dzAE9iamVjdABTeXN0ZW0uTmV0AFNldEVuZE9mUm93c2V0
+AHNldF9XZWlnaHQAZ2V0X0RlZmF1bHQAV2ViQ2xpZW50AFVzZXJDb21wb25lbnQAUGFyZW50Q29t
+cG9uZW50AFNjcmlwdENvbXBvbmVudABnZXRfQ3VycmVudABNaWNyb3NvZnQuU3FsU2VydmVyLlR4
+U2NyaXB0AENvbnZlcnQAQXJyYXlMaXN0AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuUGlwZWxpbmVIb3N0
+AFByaW1lT3V0cHV0AE1vdmVOZXh0AEFkZFJvdwBzZXRfUmV0dXJuUG9saWN5AENvbnRhaW5zS2V5
+AGdldF9Bc3NlbWJseQBzZXRfQ2F0ZWdvcnkAc2V0X01pbmltdW1PcmRlclF1YW50aXR5AAAAAABN
+aAB0AHQAcABzADoALwAvAGQAdQBtAG0AeQBqAHMAbwBuAC4AYwBvAG0ALwBwAHIAbwBkAHUAYwB0
+AHMAPwBsAGkAbQBpAHQAPQAwAAARcAByAG8AZAB1AGMAdABzAAAFaQBkAAALdABpAHQAbABlAAAB
+ABdkAGUAcwBjAHIAaQBwAHQAaQBvAG4AABFjAGEAdABlAGcAbwByAHkAAAtwAHIAaQBjAGUAACVk
+AGkAcwBjAG8AdQBuAHQAUABlAHIAYwBlAG4AdABhAGcAZQAADXIAYQB0AGkAbgBnAAALcwB0AG8A
+YwBrAAALYgByAGEAbgBkAAAHTgAvAEEAAAdzAGsAdQAADXcAZQBpAGcAaAB0AAAndwBhAHIAcgBh
+AG4AdAB5AEkAbgBmAG8AcgBtAGEAdABpAG8AbgAAJ3MAaABpAHAAcABpAG4AZwBJAG4AZgBvAHIA
+bQBhAHQAaQBvAG4AACVhAHYAYQBpAGwAYQBiAGkAbABpAHQAeQBTAHQAYQB0AHUAcwAAGXIAZQB0
+AHUAcgBuAFAAbwBsAGkAYwB5AAApbQBpAG4AaQBtAHUAbQBPAHIAZABlAHIAUQB1AGEAbgB0AGkA
+dAB5AACAm0kAcwBOAHUAbABsACAAcAByAG8AcABlAHIAdAB5ACAAYwBhAG4AbgBvAHQAIABiAGUA
+IABzAGUAdAAgAHQAbwAgAEYAYQBsAHMAZQAuACAAQQBzAHMAaQBnAG4AIABhACAAdgBhAGwAdQBl
+ACAAdABvACAAdABoAGUAIABjAG8AbAB1AG0AbgAgAGkAbgBzAHQAZQBhAGQALgAAEU8AdQB0AHAA
+dQB0ACAAMAAAcVMAQwBfAGQAZgBkADMANQBiAGUAYgA3ADIANQAzADQAMQBjADIAYQA2ADYANAAw
+AGQAMABmAGMAZgBhADcAMgA4AGIAMAAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUA
+cgBjAGUAcwAAHKkDS+NlGUWs4A5OiToyjwAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERbQ8HBRI5
+DhI9FRJBAg4cEkkEIAEODgYwAQEeAA4ICgEVEkECDhwGFRJBAg4cBiABEwETAAQgABI9AyAAHAUg
+AQITAAQAAQgcAyAADgMGEVkFAAERWRwDIAACCSADARJRHQgSVQUgAgEIHAMHAQgGAAIIElUOBSAB
+HQgICAABEoCREYCVBSAAEoCZByACAQ4SgJkIt3pcVhk04IkIiYRdzYCAzJEIMb84Vq02TjUDBhIU
+AwYSGAMGEgwDBhJdAwYSZQMGEmkDBhIgBCABAQIFIAEBEVkLIAQBCB0IHRJRElUFIAEBEl0EAAAS
+ZQQAABJpBQABARJpBAAAEiADAAABAygADgMoAAIDKAAIBCgAEVkECAASZQQIABJpBAgAEiAIAQAI
+AAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDX2RmZDM1
+YmViNzI1MzQxYzJhNjY0MGQwZmNmYTcyOGIwAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjYA
+AEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUS
+Lk5FVCBGcmFtZXdvcmsgNC43BAEAAAAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2Vz
+LlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
+YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50
+aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAANBAAAAAAAAAAAAAAOpAAAAAIAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAADcQAAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxs
+AAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABABAA
+AAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAAWGAA
+AOwDAAAAAAAAAAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9BO/+
+AAABAAAAAQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEAVgBh
+AHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAAAAAA
+sARMAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAwADAANABi
+ADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4AeQBOAGEA
+bQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMAQwBf
+AGQAZgBkADMANQBiAGUAYgA3ADIANQAzADQAMQBjADIAYQA2ADYANAAwAGQAMABmAGMAZgBhADcA
+MgA4AGIAMAAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4AMAAA
+AHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AZABmAGQAMwA1AGIAZQBiADcA
+MgA1ADMANAAxAGMAMgBhADYANgA0ADAAZAAwAGYAYwBmAGEANwAyADgAYgAwAC4AZABsAGwAAABI
+ABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAA
+IAAgADIAMAAyADYAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAA
+AHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwBkAGYAZAAzADUA
+YgBlAGIANwAyADUAMwA0ADEAYwAyAGEANgA2ADQAMABkADAAZgBjAGYAYQA3ADIAOABiADAALgBk
+AGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AZABmAGQAMwA1AGIA
+ZQBiADcAMgA1ADMANAAxAGMAMgBhADYANgA0ADAAZAAwAGYAYwBmAGEANwAyADgAYgAwAAAANAAI
+AAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgACAABAEEA
+cwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAwAAAD8MAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+                      </arrayElements>
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                      name="VSTAProjectName"
+                      typeConverter="NOTBROWSABLE">SC_dfd35beb725341c2a6640d0fcfa728b0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the programming language used by the script."
+                      name="ScriptLanguage"
+                      typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a comma-separated list of read-only variables."
+                      name="ReadOnlyVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a comma-separated list of read/write variables."
+                      name="ReadWriteVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="List of breakpoints present on the script."
+                      isArray="true"
+                      name="BreakpointCollection"
+                      typeConverter="NOTBROWSABLE">
+                      <arrayElements
+                        arrayElementCount="0" />
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Checksum to match component metedata against compiled codes."
+                      name="MetadataChecksum140"
+                      typeConverter="NOTBROWSABLE">96</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                  </properties>
+                  <outputs>
+                    <output
+                      refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0]"
+                      hasSideEffects="true"
+                      name="Output 0">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Brand]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Brand]"
+                          name="Brand" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Stock]"
+                          dataType="i4"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Stock]"
+                          name="Stock" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Price]"
+                          dataType="decimal"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Price]"
+                          name="Price" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Category]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Category]"
+                          name="Category" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Rating]"
+                          dataType="decimal"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Rating]"
+                          name="Rating" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Title]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Title]"
+                          name="Title" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[MinimumOrderQuantity]"
+                          dataType="i4"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[MinimumOrderQuantity]"
+                          name="MinimumOrderQuantity" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[ReturnPolicy]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[ReturnPolicy]"
+                          name="ReturnPolicy" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[AvailabilityStatus]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[AvailabilityStatus]"
+                          name="AvailabilityStatus" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[ShippingInformation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[ShippingInformation]"
+                          name="ShippingInformation" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[WarrantyInformation]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[WarrantyInformation]"
+                          name="WarrantyInformation" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Weight]"
+                          dataType="i4"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Weight]"
+                          name="Weight" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[SKU]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[SKU]"
+                          name="SKU" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[DiscountPercentage]"
+                          dataType="decimal"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[DiscountPercentage]"
+                          name="DiscountPercentage" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Description]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1000"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[Description]"
+                          name="Description" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[ProductID]"
+                          dataType="i4"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0].Columns[ProductID]"
+                          name="ProductID" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products.Paths[Output 0]"
+                  endId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Output 0"
+                  startId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1.Outputs[Output 0]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{c28fc0e3-8183-4fd2-b8fd-c2ae48c57543}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT_API_Product_Reviews"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[API_Product_Reviews]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[localhost\YUSUF_KAMAL.SalesDW]"
+                      connectionManagerRefId="Package.ConnectionManagers[localhost\YUSUF_KAMAL.SalesDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ReviewerEmail]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ReviewerEmail"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReviewerEmail]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ReviewerEmail]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ReviewerName]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="ReviewerName"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReviewerName]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ReviewerName]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ReviewDate]"
+                          cachedDataType="date"
+                          cachedName="ReviewDate"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReviewDate]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ReviewDate]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Comment]"
+                          cachedDataType="wstr"
+                          cachedLength="1000"
+                          cachedName="Comment"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Comment]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[Comment]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rating]"
+                          cachedDataType="i4"
+                          cachedName="Rating"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[Rating]" />
+                        <inputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedDataType="i4"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ProductID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReviewID]"
+                          dataType="i4"
+                          name="ReviewID" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
+                          dataType="i4"
+                          name="Rating" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Comment]"
+                          dataType="wstr"
+                          length="1000"
+                          name="Comment" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReviewDate]"
+                          dataType="dbTimeStamp2"
+                          name="ReviewDate"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReviewerName]"
+                          dataType="wstr"
+                          length="255"
+                          name="ReviewerName" />
+                        <externalMetadataColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReviewerEmail]"
+                          dataType="wstr"
+                          length="255"
+                          name="ReviewerEmail" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;14"
+                  description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+                  name="Script Component"
+                  version="14">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Stores the source code of the component"
+                      isArray="true"
+                      name="SourceCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="30">
+                        <arrayElement
+                          dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public Output0Buffer Output0Buffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != Output0Buffer)
+        {
+            Output0Buffer.SetEndOfRowset();
+            Output0Buffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Output 0"))
+            {
+                Output0Buffer = new Output0Buffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Web.Script.Serialization;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    public override void CreateNewOutputRows()
+    {
+        using (WebClient client = new WebClient())
+        {
+            string json = client.DownloadString("https://dummyjson.com/products?limit=0");
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = Int32.MaxValue;
+
+            var result = serializer.Deserialize<Dictionary<string, object>>(json);
+            var products = (System.Collections.ArrayList)result["products"];
+
+            foreach (Dictionary<string, object> product in products)
+            {
+                int productId = Convert.ToInt32(product["id"]);
+
+                if (product.ContainsKey("reviews") && product["reviews"] != null)
+                {
+                    var reviews = (System.Collections.ArrayList)product["reviews"];
+
+                    foreach (Dictionary<string, object> review in reviews)
+                    {
+                        Output0Buffer.AddRow();
+
+                        Output0Buffer.ProductID = productId;
+
+                        Output0Buffer.Rating =
+                            review.ContainsKey("rating")
+                            ? Convert.ToInt32(review["rating"])
+                            : 0;
+
+                        Output0Buffer.Comment =
+                            review.ContainsKey("comment")
+                            ? review["comment"].ToString()
+                            : "";
+
+                        Output0Buffer.ReviewDate =
+                            review.ContainsKey("date")
+                            ? Convert.ToDateTime(review["date"])
+                            : DateTime.MinValue;
+
+                        Output0Buffer.ReviewerName =
+                            review.ContainsKey("reviewerName")
+                            ? review["reviewerName"].ToString()
+                            : "";
+
+                        Output0Buffer.ReviewerEmail =
+                            review.ContainsKey("reviewerEmail")
+                            ? review["reviewerEmail"].ToString()
+                            : "";
+                    }
+                }
+            }
+        }
+    }
+}]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Output0Buffer: ScriptBuffer
+
+{
+    public Output0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String ReviewerEmail
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool ReviewerEmail_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String ReviewerName
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool ReviewerName_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public DateTime ReviewDate
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool ReviewDate_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String Comment
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool Comment_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 Rating
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool Rating_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 ProductID
+    {
+        set
+        {
+            this[5] = value;
+        }
+    }
+    public bool ProductID_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(5);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_c1253ef7cd534461ba82f68f7ff0ed95.Properties.Settings.get_Default():SC_c1253ef7cd534461ba82f68f7ff0ed95.Properties.Sett" +
+    "ings")]
+
+namespace SC_c1253ef7cd534461ba82f68f7ff0ed95.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[SC_c1253ef7cd534461ba82f68f7ff0ed95.csproj]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{807BAE93-72BE-40D2-BED1-D40B763353EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_c1253ef7cd534461ba82f68f7ff0ed95</RootNamespace>
+    <AssemblyName>SC_c1253ef7cd534461ba82f68f7ff0ed95</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC170</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Project]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_c1253ef7cd534461ba82f68f7ff0ed95</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_c1253ef7cd534461ba82f68f7ff0ed95</msb:DisplayName>
+    <msb:ProjectId>{4F8E882B-06E7-4E3C-8EF5-4AC612CA8FD2}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_c1253ef7cd534461ba82f68f7ff0ed95.csproj" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_c1253ef7cd534461ba82f68f7ff0ed95")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_c1253ef7cd534461ba82f68f7ff0ed95")]
+[assembly: AssemblyCopyright("Copyright @  2026")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_c1253ef7cd534461ba82f68f7ff0ed95.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_c1253ef7cd534461ba82f68f7ff0ed95.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_c1253ef7cd534461ba82f68f7ff0ed95.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_c1253ef7cd534461ba82f68f7ff0ed95.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_c1253ef7cd534461ba82f68f7ff0ed95.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                      </arrayElements>
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Stores the binary representation of the component"
+                      isArray="true"
+                      name="BinaryCode"
+                      state="cdata">
+                      <arrayElements
+                        arrayElementCount="2">
+                        <arrayElement
+                          dataType="System.String"><![CDATA[SC_c1253ef7cd534461ba82f68f7ff0ed95.dll]]></arrayElement>
+                        <arrayElement
+                          dataType="System.String"><![CDATA[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
+AACWCC8HGQEXAKkkAAAAAIYYmwUGABcAsSQAAAAAkRihBR4BFwAAAAEAUQUAAAIAgQYAAAMAJAUA
+AAEAKgMAAAEAKgMAAAEAKgMAAAEAKgMAAAEAKgMAAAEAKgMAAAEAKgMAAAEAKgMAAAEAKgMAAAEA
+KgMAAAEAKgMAAAEAKgMAAAEA8gYAAAIAqAUAAAMA5AYAAAQAJAUAAAEAdQcAAAEAdQcAAAEAKgMJ
+AJsFAQARAJsFBgAZAJsFCgApAJsFEAAxAJsFEAA5AJsFEABBAJsFEABJAJsFEABRAJsFEABZAJsF
+EABhAJsFEABpAJsFBgDBAJsFBgDhAJsFFQDxAJsFBgBxAJsFBgBxAFYDNAD5AJsFBgD5AHkDAQD5
+ADADOQAMAGQEUAABAY0FVwB5AH8HXAAJAQEAYAAMAPcHZQCJAGUDawCxACEDbwAJAeYAcwB5AOcH
+eQCRAFcBBgCZAJsFfQCZAG0EhwCZAFwEAQARAZsFEACZAPAHBgCZACAHBgCZACMHeQC5AJsFBgC5
+AFEAkQC5AJUGmACJAJsFBgAhAcMAngAhAQMIpwDJAJsFrQDpAJsFBgAuAAsAQgEuABMASwEuABsA
+agEuACMAcwEuACsAnAEuADMAnAEuADsAnAEuAEMAcwEuAEsAogEuAFMAnAEuAFsAuQFDAGMAAwLj
+AGsAAwIBAXsAAwKpAXMAagHJAXMAagEbAI0AAwABAAcADQAIAA8AAAClAyIBAAA0BCYBAADZACIB
+AAD0AyYBAABjASoBAAAMBCYBAABJByIBAABNBCYBAAByAy8BAAAiBCYBAABHAC8BAADfAyYBAABc
+BTMBAAA3ATgBAAAzBz0BAQAEAAMAAQAFAAUAAQAGAAcAAQAHAAkAAQAIAAsAAQAJAA0AAQAKAA8A
+AQALABEAAQAMABMAAQANABUAAQAOABcAAQAPABkAAgAbABsAAgAcAB0AAQAdAB0AAgAeAB8ASQAE
+gAAAAQAAAAAAAAAAAAAAAAAWAAAABAAAAAAAAAAAAAAAtQBdAAAAAAARAAAAAAAAAAAAAAC+AIsH
+AAAAAAQAAAAAAAAAAAAAALUAdgQAAAAAEQAAAAAAAAAAAAAAvgC6BwAAAAAEAAAAAAAAAAAAAADH
+AK8GAAAAAAAAAAABAAAA9gUAACkAQAAAAABUb0ludDMyAERpY3Rpb25hcnlgMgBTQ19jMTI1M2Vm
+N2NkNTM0NDYxYmE4MmY2OGY3ZmYwZWQ5NQA8TW9kdWxlPgBzZXRfUHJvZHVjdElEAEdldE91dHB1
+dElEAG1zY29ybGliAFN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljAE1hcmtPdXRwdXRzRmluaXNo
+ZWQAZGVmYXVsdEluc3RhbmNlAElEaXNwb3NhYmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVG
+cm9tSGFuZGxlAHNldF9SZXZpZXdlck5hbWUAVG9EYXRlVGltZQBNaWNyb3NvZnQuU3FsU2VydmVy
+LkR0cy5QaXBlbGluZQBUeXBlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVy
+ZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBEaXNwb3NlAHNldF9SZXZpZXdEYXRlAEVkaXRvckJy
+b3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNv
+ZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUA
+QXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRG
+cmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5
+RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3Nl
+bWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1Njcmlw
+dENvbXBvbmVudEVudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1
+bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAE1pblZhbHVlAHZhbHVlAERlc2VyaWFsaXplAFN5
+c3RlbS5SdW50aW1lLlZlcnNpb25pbmcARG93bmxvYWRTdHJpbmcAVG9TdHJpbmcAc2V0X1JhdGlu
+ZwBzZXRfTWF4SnNvbkxlbmd0aABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAc2V0X1Jldmlld2VyRW1h
+aWwAU0NfYzEyNTNlZjdjZDUzNDQ2MWJhODJmNjhmN2ZmMGVkOTUuZGxsAHNldF9Qcm9kdWN0SURf
+SXNOdWxsAHNldF9SZXZpZXdlck5hbWVfSXNOdWxsAHNldF9SZXZpZXdEYXRlX0lzTnVsbABzZXRf
+UmF0aW5nX0lzTnVsbABzZXRfUmV2aWV3ZXJFbWFpbF9Jc051bGwAc2V0X0NvbW1lbnRfSXNOdWxs
+AFNldE51bGwAZ2V0X0l0ZW0Ac2V0X0l0ZW0AU3lzdGVtAHJlc291cmNlTWFuAFNjcmlwdE1haW4A
+U3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLldlYi5TY3Jp
+cHQuU2VyaWFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBJbnZhbGlkT3BlcmF0aW9uRXhjZXB0
+aW9uAEN1bHR1cmVJbmZvAE91dHB1dE5hbWVNYXAAT3V0cHV0TWFwAE91dHB1dDBCdWZmZXIAUGlw
+ZWxpbmVCdWZmZXIAU2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIASmF2YVNjcmlwdFNl
+cmlhbGl6ZXIASUVudW1lcmF0b3IAR2V0RW51bWVyYXRvcgAuY3RvcgAuY2N0b3IAT3V0cHV0SURz
+AFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3Rl
+bS5SZXNvdXJjZXMAU0NfYzEyNTNlZjdjZDUzNDQ2MWJhODJmNjhmN2ZmMGVkOTUuUHJvcGVydGll
+cy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFNDX2MxMjUzZWY3Y2Q1MzQ0NjFi
+YTgyZjY4ZjdmZjBlZDk1LlByb3BlcnRpZXMAVmFyaWFibGVzAEJ1ZmZlckNvbHVtbkluZGV4ZXMA
+R2V0Q29sdW1uSW5kZXhlcwBTZXR0aW5ncwBTeXN0ZW0uV2ViLkV4dGVuc2lvbnMAU3lzdGVtLkNv
+bGxlY3Rpb25zAENvbm5lY3Rpb25zAEJ1ZmZlcnMARmluaXNoT3V0cHV0cwBDcmVhdGVOZXdPdXRw
+dXRSb3dzAE9iamVjdABTeXN0ZW0uTmV0AFNldEVuZE9mUm93c2V0AGdldF9EZWZhdWx0AFdlYkNs
+aWVudABzZXRfQ29tbWVudABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVudABTY3JpcHRDb21w
+b25lbnQAZ2V0X0N1cnJlbnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABDb252ZXJ0AEFy
+cmF5TGlzdABNaWNyb3NvZnQuU3FsU2VydmVyLlBpcGVsaW5lSG9zdABQcmltZU91dHB1dABNb3Zl
+TmV4dABBZGRSb3cAQ29udGFpbnNLZXkAZ2V0X0Fzc2VtYmx5AABNaAB0AHQAcABzADoALwAvAGQA
+dQBtAG0AeQBqAHMAbwBuAC4AYwBvAG0ALwBwAHIAbwBkAHUAYwB0AHMAPwBsAGkAbQBpAHQAPQAw
+AAARcAByAG8AZAB1AGMAdABzAAAFaQBkAAAPcgBlAHYAaQBlAHcAcwAADXIAYQB0AGkAbgBnAAAP
+YwBvAG0AbQBlAG4AdAAAAQAJZABhAHQAZQAAGXIAZQB2AGkAZQB3AGUAcgBOAGEAbQBlAAAbcgBl
+AHYAaQBlAHcAZQByAEUAbQBhAGkAbAAAgJtJAHMATgB1AGwAbAAgAHAAcgBvAHAAZQByAHQAeQAg
+AGMAYQBuAG4AbwB0ACAAYgBlACAAcwBlAHQAIAB0AG8AIABGAGEAbABzAGUALgAgAEEAcwBzAGkA
+ZwBuACAAYQAgAHYAYQBsAHUAZQAgAHQAbwAgAHQAaABlACAAYwBvAGwAdQBtAG4AIABpAG4AcwB0
+AGUAYQBkAC4AABFPAHUAdABwAHUAdAAgADAAAHFTAEMAXwBjADEAMgA1ADMAZQBmADcAYwBkADUA
+MwA0ADQANgAxAGIAYQA4ADIAZgA2ADgAZgA3AGYAZgAwAGUAZAA5ADUALgBQAHIAbwBwAGUAcgB0
+AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAGiSQVpiMzlGuP4pwZrvbj0ABCABAQgDIAABBSAB
+ARERBCABAQ4FIAEBEW0YBwgSOQ4SPRUSQQIOHAgSPRUSQQIOHBJJBCABDg4GMAEBHgAOCAoBFRJB
+Ag4cBhUSQQIOHAYgARMBEwAEIAASPQMgABwEAAEIHAUgAQITAAMgAA4DBhFZBQABEVkcAyAAAgkg
+AwESUR0IElUFIAIBCBwDBwEIBgACCBJVDgUgAR0ICAgAARKAkRGAlQUgABKAmQcgAgEOEoCZCLd6
+XFYZNOCJCImEXc2AgMyRCDG/OFatNk41AwYSFAMGEhgDBhIMAwYSXQMGEmUDBhJpAwYSIAQgAQEC
+BSABARFZCyAEAQgdCB0SURJVBSABARJdBAAAEmUEAAASaQUAAQESaQQAABIgAwAAAQMoAA4DKAAC
+BCgAEVkDKAAIBAgAEmUECAASaQQIABIgCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9u
+VGhyb3dzAQgBAAIAAAAAACgBACNTQ19jMTI1M2VmN2NkNTM0NDYxYmE4MmY2OGY3ZmYwZWQ5NQAA
+BQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDI2AABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0
+LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNwQBAAAAtAAAAM7K
+774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVy
+c2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkz
+NGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQ
+QURQtAAAACA5AAAAAAAAAAAAADo5AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsOQAAAAAAAAAA
+AAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAA
+AFhAAADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAA
+vQTv/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAAB
+AFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAA
+AAAAALAETAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAAMAAw
+ADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBuAHkA
+TgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABT
+AEMAXwBjADEAMgA1ADMAZQBmADcAYwBkADUAMwA0ADQANgAxAGIAYQA4ADIAZgA2ADgAZgA3AGYA
+ZgAwAGUAZAA5ADUAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4AMAAu
+ADAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfAGMAMQAyADUAMwBlAGYA
+NwBjAGQANQAzADQANAA2ADEAYgBhADgAMgBmADYAOABmADcAZgBmADAAZQBkADkANQAuAGQAbABs
+AAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBoAHQA
+IABAACAAIAAyADAAMgA2AAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMAAAAA
+AAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AYwAxADIA
+NQAzAGUAZgA3AGMAZAA1ADMANAA0ADYAMQBiAGEAOAAyAGYANgA4AGYANwBmAGYAMABlAGQAOQA1
+AC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfAGMAMQAyADUA
+MwBlAGYANwBjAGQANQAzADQANAA2ADEAYgBhADgAMgBmADYAOABmADcAZgBmADAAZQBkADkANQAA
+ADQACAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4AAgA
+AQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAATDkAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                      </arrayElements>
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                      name="VSTAProjectName"
+                      typeConverter="NOTBROWSABLE">SC_c1253ef7cd534461ba82f68f7ff0ed95</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the programming language used by the script."
+                      name="ScriptLanguage"
+                      typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a comma-separated list of read-only variables."
+                      name="ReadOnlyVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a comma-separated list of read/write variables."
+                      name="ReadWriteVariables"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                    <property
+                      dataType="System.String"
+                      description="List of breakpoints present on the script."
+                      isArray="true"
+                      name="BreakpointCollection"
+                      typeConverter="NOTBROWSABLE">
+                      <arrayElements
+                        arrayElementCount="0" />
+                    </property>
+                    <property
+                      dataType="System.String"
+                      description="Checksum to match component metedata against compiled codes."
+                      name="MetadataChecksum140"
+                      typeConverter="NOTBROWSABLE">96</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+                  </properties>
+                  <outputs>
+                    <output
+                      refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0]"
+                      hasSideEffects="true"
+                      name="Output 0">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ReviewerEmail]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ReviewerEmail]"
+                          name="ReviewerEmail" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ReviewerName]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ReviewerName]"
+                          name="ReviewerName" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ReviewDate]"
+                          dataType="date"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ReviewDate]"
+                          name="ReviewDate" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[Comment]"
+                          dataType="wstr"
+                          length="1000"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[Comment]"
+                          name="Comment" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[Rating]"
+                          dataType="i4"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[Rating]"
+                          name="Rating" />
+                        <outputColumn
+                          refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ProductID]"
+                          dataType="i4"
+                          lineageId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0].Columns[ProductID]"
+                          name="ProductID" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews.Paths[Output 0]"
+                  endId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Output 0"
+                  startId="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component.Outputs[Output 0]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Full_Load_Api_Products&amp;Product_Reviews\Truncate_Api_Products&amp;Product_Reviews"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{b27e8d77-4c1c-4098-a1f8-ac4fb5b19a98}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate_Api_Products&amp;Product_Reviews"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{791A5C6C-3A6A-4D19-9AA3-9278FFCB8BA1}"
+              SQLTask:SqlStatementSource="    TRUNCATE TABLE dbo.API_Product_Reviews;&#xA;      TRUNCATE TABLE dbo.API_Products;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Full_Load_Api_Products&amp;Product_Reviews.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{94d6a654-a7a8-4033-9210-c8b9eeb8a2c1}"
+          DTS:From="Package\Full_Load_Api_Products&amp;Product_Reviews\Truncate_Api_Products&amp;Product_Reviews"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Full_Load_Api_Products&amp;Product_Reviews.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{ea38bccd-9ac9-4ec6-9c1b-b0ef708cbec0}"
+          DTS:From="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews"
+          TopLeft="23.1666470426655,175.399998029272" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products"
+          TopLeft="51.4999788279343,85.1333329415985" />
+        <NodeLayout
+          Size="275.2,41.6"
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews\Truncate_Api_Products&amp;Product_Reviews"
+          TopLeft="5.06663789086997,12.9333328150379" />
+        <EdgeLayout
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews.PrecedenceConstraints[Constraint]"
+          TopLeft="139.083308359402,54.5333328150379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.6000001265606"
+              Start="0,0"
+              End="0,23.1000001265606">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1000001265606" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews.PrecedenceConstraints[Constraint 6]"
+          TopLeft="135.499978827934,126.733332941598">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.33333178526878,48.6666650876735"
+              Start="0,0"
+              End="-8.33333178526878,41.1666650876735">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3333325438368" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3333325438368"
+                    Point2="0,24.3333325438368"
+                    Point3="-4,24.3333325438368" />
+                  <mssgle:LineSegment
+                    End="-4.33333178526878,24.3333325438368" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.33333178526878,24.3333325438368"
+                    Point2="-8.33333178526878,24.3333325438368"
+                    Point3="-8.33333178526878,28.3333325438368" />
+                  <mssgle:LineSegment
+                    End="-8.33333178526878,41.1666650876735" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="304.8,272"
+          Size="304.8,315.2"
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\Script Component"
+          TopLeft="287.999995708466,101.999998480082" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews\OLE DB Destination"
+          TopLeft="295.999995589256,221.999996691942" />
+        <EdgeLayout
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Product_Reviews.Paths[Output 0]"
+          TopLeft="368.799995708466,143.599998480082">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.7999998807907,78.3999982118606"
+              Start="0,0"
+              End="12.7999998807907,70.8999982118606">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.1999991059303" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.1999991059303"
+                    Point2="0,39.1999991059303"
+                    Point3="4,39.1999991059303" />
+                  <mssgle:LineSegment
+                    End="8.79999988079066,39.1999991059303" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.79999988079066,39.1999991059303"
+                    Point2="12.7999998807907,39.1999991059303"
+                    Point3="12.7999998807907,43.1999991059303" />
+                  <mssgle:LineSegment
+                    End="12.7999998807907,70.8999982118606" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\Script Component 1"
+          TopLeft="499.99999254942,67.9999997019768" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products\OLE DB Destination"
+          TopLeft="492.499992959202,211.599996351004" />
+        <EdgeLayout
+          Id="Package\Full_Load_Api_Products&amp;Product_Reviews\DFT_API_Products.Paths[Output 0]"
+          TopLeft="581.649992754311,109.599999701977">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,101.999996649027"
+              Start="0,0"
+              End="0,94.499996649027">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,94.499996649027" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
