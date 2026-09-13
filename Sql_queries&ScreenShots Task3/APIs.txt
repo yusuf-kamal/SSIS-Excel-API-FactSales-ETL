@@ -1,0 +1,8 @@
+products:
+https://dummyjson.com/products
+
+users:
+https://dummyjson.com/users
+
+carts:
+https://dummyjson.com/carts
